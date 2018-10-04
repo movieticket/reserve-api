@@ -9,7 +9,7 @@ authRouter.post(
     '/purchaseNumberAuth',
     async (req, res, next) => {
         try {
-            const result = await mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body, { timeout: 10 });
+            const result = await mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body);
             res.json(result);
         } catch (error) {
             next(error);

@@ -16,7 +16,7 @@ const express = require("express");
 const seatRouter = express.Router();
 seatRouter.post('/seatInfoSync', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     try {
-        const result = yield mvtk.services.seat.seatInfoSync.seatInfoSync(req.body, { timeout: 10 });
+        const result = yield mvtk.services.seat.seatInfoSync.seatInfoSync(req.body);
         res.json(result);
     }
     catch (error) {

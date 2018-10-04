@@ -16,7 +16,7 @@ const express = require("express");
 const authRouter = express.Router();
 authRouter.post('/purchaseNumberAuth', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     try {
-        const result = yield mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body, { timeout: 10 });
+        const result = yield mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body);
         res.json(result);
     }
     catch (error) {
