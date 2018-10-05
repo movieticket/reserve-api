@@ -17,6 +17,10 @@ exports.default = (err, __, res, next) => {
     if (err instanceof api_1.APIError) {
         apiError = err;
     }
+    else if (err.name === 'MvtkReserveServiceError') {
+        // mvtk-reserve-serviceのthrowしたエラーであればステータスコード継承
+        apiError = new api_1.APIError(err.code, [err]);
+    }
     else {
         // 500
         apiError = new api_1.APIError(http_status_1.INTERNAL_SERVER_ERROR, [err]);
