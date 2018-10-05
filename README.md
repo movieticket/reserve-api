@@ -11,11 +11,13 @@
 
 ### Environment variables
 
-| Name           | Required | Value                     | Purpose                |
-|----------------|----------|---------------------------|------------------------|
-| `DEBUG`        | false    | movieticket-reserve-api:* | Debug                  |
-| `NODE_ENV`     | true     |                           | Environment name       |
-| `MONGOLAB_URI` | true     |                           | MongoDB connection URI |
+| Name                         | Required | Value                     | Purpose                   |
+| ---------------------------- | -------- | ------------------------- | ------------------------- |
+| `DEBUG`                      | false    | movieticket-reserve-api:* | Debug                     |
+| `NODE_ENV`                   | true     |                           | Environment name          |
+| `MVTK_RESERVE_ENDPOINT`      | true     |                           | ムビチケAPIエンドポイント |
+| `TOKEN_ISSUERS`              | true     |                           |                           |
+| `RESOURCE_SERVER_IDENTIFIER` | true     |                           |                           |
 
 ## License
 

@@ -7,6 +7,10 @@ import { NOT_FOUND, UNAUTHORIZED } from 'http-status';
 import * as assert from 'power-assert';
 import * as request from 'supertest';
 
+before(() => {
+    process.env.TOKEN_ISSUERS = 'https://example.com';
+    process.env.RESOURCE_SERVER_IDENTIFIER = 'https://example.com';
+});
 describe('GET /', () => {
     beforeEach(() => {
         delete process.env.BASIC_AUTH_NAME;

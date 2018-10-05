@@ -13,8 +13,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const mvtk = require("@motionpicture/mvtk-reserve-service");
 const express = require("express");
+const authentication_1 = require("../middlewares/authentication");
+const permitScopes_1 = require("../middlewares/permitScopes");
 const authRouter = express.Router();
-authRouter.post('/purchaseNumberAuth', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+authRouter.use(authentication_1.default);
+authRouter.post('/purchaseNumberAuth', permitScopes_1.default(['admin']), (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     try {
         const result = yield mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body);
         res.json(result);
