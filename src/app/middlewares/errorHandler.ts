@@ -22,7 +22,7 @@ export default (err: any, __: Request, res: Response, next: NextFunction) => {
         apiError = err;
     } else {
         // 500
-        apiError = new APIError(INTERNAL_SERVER_ERROR, [new Error(err.message)]);
+        apiError = new APIError(INTERNAL_SERVER_ERROR, [err]);
     }
 
     res.status(apiError.code).json({
