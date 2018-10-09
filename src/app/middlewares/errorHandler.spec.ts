@@ -3,7 +3,7 @@
  * エラーハンドラーミドルウェアテスト
  */
 import * as assert from 'assert';
-import { INTERNAL_SERVER_ERROR } from 'http-status';
+import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from 'http-status';
 import * as nock from 'nock';
 import * as sinon from 'sinon';
 
@@ -56,6 +56,48 @@ describe('errorHandler.default()', () => {
         sandbox.mock(params).expects('next').never();
         sandbox.mock(params.res).expects('status').once().returns(params.res);
         sandbox.mock(params.res).expects('json').once().withExactArgs({ error: params.err.toObject() }).returns(params.res);
+
+        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        assert.equal(result, undefined);
+        sandbox.verify();
+    });
+
+    it('MvtkReserveServiceErrorと共に呼ばれればステータスコードを継承するはず', async () => {
+        const params = {
+            err: { name: 'MvtkReserveServiceError', code: BAD_REQUEST },
+            req: {},
+            res: {
+                headersSent: false,
+                status: () => undefined,
+                json: () => undefined
+            },
+            next: () => undefined
+        };
+
+        sandbox.mock(params).expects('next').never();
+        sandbox.mock(params.res).expects('status').once().withExactArgs(params.err.code).returns(params.res);
+        sandbox.mock(params.res).expects('json').once().returns(params.res);
+
+        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        assert.equal(result, undefined);
+        sandbox.verify();
+    });
+
+    it('ハンドリングされていないエラーと共に呼ばれればINTERNAL_SERVER_ERRORとなるはず', async () => {
+        const params = {
+            err: new Error(),
+            req: {},
+            res: {
+                headersSent: false,
+                status: () => undefined,
+                json: () => undefined
+            },
+            next: () => undefined
+        };
+
+        sandbox.mock(params).expects('next').never();
+        sandbox.mock(params.res).expects('status').once().withExactArgs(INTERNAL_SERVER_ERROR).returns(params.res);
+        sandbox.mock(params.res).expects('json').once().returns(params.res);
 
         const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);

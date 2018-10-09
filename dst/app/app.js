@@ -5,7 +5,6 @@
 const middlewares = require("@motionpicture/express-middleware");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const createDebug = require("debug");
 const express = require("express");
 const expressValidator = require("express-validator");
 const helmet = require("helmet");
@@ -15,7 +14,6 @@ const api_1 = require("./error/api");
 const errorHandler_1 = require("./middlewares/errorHandler");
 const notFoundHandler_1 = require("./middlewares/notFoundHandler");
 const router_1 = require("./routes/router");
-const debug = createDebug('movieticket-reserve-api:app');
 const app = express();
 app.set('query parser', (str) => qs.parse(str, {
     arrayLimit: 1000,
@@ -61,19 +59,6 @@ app.use((__, res, next) => {
     res.setHeader('X-API-Version', packageInfo.version);
     next();
 });
-// tslint:disable-next-line:no-single-line-block-comment
-/* istanbul ignore next */
-if (process.env.NODE_ENV !== 'production') {
-    // サーバーエラーテスト
-    app.get('/dev/uncaughtexception', (req) => {
-        req.on('data', (chunk) => {
-            debug(chunk);
-        });
-        req.on('end', () => {
-            throw new Error('uncaughtexception manually');
-        });
-    });
-}
 // view engine setup
 // app.set('views', `${__dirname}/views`);
 // app.set('view engine', 'ejs');

@@ -11,7 +11,7 @@ const debug = createDebug('movieticket-reserve-api:server');
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort((process.env.PORT === undefined) ? '8082' : process.env.PORT);
+const port = normalizePort((process.env.PORT === undefined) ? '8081' : process.env.PORT);
 app.set('port', port);
 /**
  * Create HTTP server.
