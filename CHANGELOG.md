@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
+- PM2設定を追加。
+
 ### Deprecated
 
 ### Removed
@@ -19,5 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Security
 
 ## v1.0.0 - 2018-10-09
+
 ### Added
+
 - ムビチケAPIをラッピングする形でファーストリリース。
