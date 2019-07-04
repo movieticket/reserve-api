@@ -18,7 +18,8 @@
     "express-validator": "^5.3.0",
     "helmet": "^3.15.0",
     "http-status": "^1.1.2",
-    "qs": "^6.5.2"
+    "qs": "^6.5.2",
+    "snyk": "^1.189.0"
   },
   "description": "Movieticket Reserve API Web Application",
   "devDependencies": {
@@ -47,7 +48,6 @@
     "power-assert": "^1.6.1",
     "rimraf": "^2.6.2",
     "sinon": "^5.1.1",
-    "snyk": "^1.108.2",
     "supertest": "^3.3.0",
     "ts-node": "^6.1.0",
     "tslint": "^5.11.0",
@@ -81,7 +81,10 @@
     "tslint": "tslint --project tsconfig.json -c tslint.json --exclude \"**/*.spec.ts\" \"src/**/*.ts\"",
     "preversion": "npm run clean && npm run build && npm test && npm run doc",
     "version": "git add -A",
-    "postversion": "git push origin --tags"
+    "postversion": "git push origin --tags",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
-  "version": "1.0.1"
+  "version": "1.0.1",
+  "snyk": true
 }
