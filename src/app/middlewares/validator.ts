@@ -14,9 +14,10 @@ const debug = createDebug('movieticket-reserve-api:middlewares');
 export default async (req: Request, _: Response, next: NextFunction) => {
     const validatorResult = await req.getValidationResult();
     if (!validatorResult.isEmpty()) {
-        const errors = validatorResult.array().map((mappedRrror) => {
-            return new Error(mappedRrror.msg);
-        });
+        const errors = validatorResult.array()
+            .map((mappedRrror) => {
+                return new Error(mappedRrror.msg);
+            });
         debug('validation result not empty...', errors);
 
         next(new APIError(BAD_REQUEST, errors));

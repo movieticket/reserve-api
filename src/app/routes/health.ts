@@ -9,7 +9,8 @@ healthRouter.get(
     '',
     async (_, res, next) => {
         try {
-            res.status(OK).send('healthy!');
+            res.status(OK)
+                .send('healthy!');
         } catch (error) {
             next(error);
         }

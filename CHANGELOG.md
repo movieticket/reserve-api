@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - update @motionpicture/mvtk-reserve-service
+- 依存パッケージを最適化
 
 ### Deprecated
 

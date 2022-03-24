@@ -28,7 +28,8 @@ export default (err: any, __: Request, res: Response, next: NextFunction) => {
         apiError = new APIError(INTERNAL_SERVER_ERROR, [err]);
     }
 
-    res.status(apiError.code).json({
-        error: apiError.toObject()
-    });
+    res.status(apiError.code)
+        .json({
+            error: apiError.toObject()
+        });
 };

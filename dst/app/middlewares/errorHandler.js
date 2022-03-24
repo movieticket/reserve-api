@@ -25,7 +25,8 @@ exports.default = (err, __, res, next) => {
         // 500
         apiError = new api_1.APIError(http_status_1.INTERNAL_SERVER_ERROR, [err]);
     }
-    res.status(apiError.code).json({
+    res.status(apiError.code)
+        .json({
         error: apiError.toObject()
     });
 };
