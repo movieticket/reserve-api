@@ -120,7 +120,8 @@ workflows:
             - doc
           filters:
             branches:
-              only: develop
+              only: /feature\/.+-alpha.+/
+              # only: develop
       - prerelease:
           requires:
             - doc

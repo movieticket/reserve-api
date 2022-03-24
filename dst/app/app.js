@@ -6,7 +6,6 @@ const middlewares = require("@motionpicture/express-middleware");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
-const expressValidator = require("express-validator");
 const helmet = require("helmet");
 const http_status_1 = require("http-status");
 const qs = require("qs");
@@ -66,7 +65,6 @@ app.use(bodyParser.json());
 // The extended option allows to choose between parsing the URL-encoded data
 // with the querystring library (when false) or the qs library (when true).
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator({})); // this line must be immediately after any of the bodyParser middlewares!
 // 静的ファイル
 // app.use(express.static(__dirname + '/../../public'));
 // routers
