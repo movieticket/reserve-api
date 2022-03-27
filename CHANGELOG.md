@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - update @motionpicture/mvtk-reserve-service
 - 依存パッケージを最適化
 - validatorミドルウェアを削除
+- update soap
 
 ### Deprecated
 
