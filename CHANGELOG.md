@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v1.1.0 - 2022-03-28
+
+### Changed
+
+- update @motionpicture/mvtk-reserve-service
+- 依存パッケージを最適化
+- validatorミドルウェアを削除
+- update soap
+
 ## v1.0.1 - 2018-11-12
 
 ### Changed

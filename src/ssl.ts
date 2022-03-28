@@ -23,7 +23,9 @@ app.set('port', port);
  */
 
 const options = {
+    // tslint:disable-next-line:non-literal-fs-path
     key: fs.readFileSync(`${__dirname}/../certificate/server.key`),
+    // tslint:disable-next-line:non-literal-fs-path
     cert: fs.readFileSync(`${__dirname}/../certificate/server.crt`)
 };
 const server = https.createServer(options, app);
@@ -75,11 +77,9 @@ function onError(error: any) {
         case 'EACCES':
             console.error(`${bind} requires elevated privileges`);
             process.exit(1);
-            break;
         case 'EADDRINUSE':
             console.error(`${bind} is already in use`);
             process.exit(1);
-            break;
         default:
             throw error;
     }

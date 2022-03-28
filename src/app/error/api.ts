@@ -1,12 +1,13 @@
 /**
- * APIError
+ * アプリケーションエラー
  */
 export class APIError extends Error {
     public readonly code: number;
     public readonly errors: Error[];
 
     constructor(code: number, errors: Error[]) {
-        const message = errors.map((error) => error.message).join('\n');
+        const message = errors.map((error) => error.message)
+            .join('\n');
         super(message);
 
         this.name = 'APIError';

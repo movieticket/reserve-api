@@ -76,19 +76,19 @@ jobs:
           command: |
             git remote add development-staging ${DEPLOY_TARGET_REPOSITORY_DEVELOPMENT}
             git push development-staging $CIRCLE_BRANCH:master -f -v
-  prerelease:
-    docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: deploy to azure webapps prerelease
-          command: |
-            git remote add prerelease ${DEPLOY_TARGET_REPOSITORY_PRERELEASE}
-            git push prerelease $CIRCLE_BRANCH:master -f -v
+  # prerelease:
+  #   docker:
+  #     - image: circleci/node:latest
+  #     - image: mongo:3.4.4
+  #   steps:
+  #     - checkout
+  #     - restore_cache:
+  #         key: dependency-cache-{{ checksum "package.json" }}
+  #     - run:
+  #         name: deploy to azure webapps prerelease
+  #         command: |
+  #           git remote add prerelease ${DEPLOY_TARGET_REPOSITORY_PRERELEASE}
+  #           git push prerelease $CIRCLE_BRANCH:master -f -v
   deploy:
     docker:
       - image: circleci/node:latest
@@ -120,13 +120,14 @@ workflows:
             - doc
           filters:
             branches:
-              only: develop
-      - prerelease:
-          requires:
-            - doc
-          filters:
-            branches:
               only: /feature\/.+-alpha.+/
+              # only: develop
+      # - prerelease:
+      #     requires:
+      #       - doc
+      #     filters:
+      #       branches:
+      #         only: /feature\/.+-alpha.+/
       - deploy:
           requires:
             - doc
