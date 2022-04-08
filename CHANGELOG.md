@@ -10,8 +10,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
-- process.jsonを削除
-
 ### Deprecated
 
 ### Removed
