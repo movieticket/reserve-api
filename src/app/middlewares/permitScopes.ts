@@ -8,7 +8,7 @@ import { UNAUTHORIZED } from 'http-status';
 import { } from '../../@types/index';
 import { APIError } from '../error/api';
 
-const debug = createDebug('movieticket-reserve-api:middlewares');
+const debug = createDebug('surfrock-reserve-api:middlewares');
 
 /**
  * スコープインターフェース

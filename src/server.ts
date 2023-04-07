@@ -8,7 +8,7 @@ import * as createDebug from 'debug';
 import * as http from 'http';
 import * as app from './app/app';
 
-const debug = createDebug('movieticket-reserve-api:server');
+const debug = createDebug('surfrock-reserve-api:server');
 
 /**
  * Get port from environment and store in Express.
@@ -86,7 +86,7 @@ function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'
         ? `pipe ${addr}`
-        : `port ${addr.port.toString()}`;
+        : `port ${addr?.port.toString()}`;
     debug(`Listening on ${bind}`);
 
     const diff = process.hrtime(startTime);

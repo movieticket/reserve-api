@@ -10,9 +10,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
+- update helment@6.x.x
+
 ### Deprecated
 
 ### Removed
+
+- CORSを廃止
 
 ### Fixed
 
