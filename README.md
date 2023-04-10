@@ -1,4 +1,4 @@
-# Movieticket Reserve API Application
+# surfrock reserve api
 
 [![CircleCI](https://circleci.com/gh/movieticket/reserve-api.svg?style=svg)](https://circleci.com/gh/movieticket/reserve-api)
 
@@ -11,14 +11,12 @@
 
 ### Environment variables
 
-| Name                         | Required | Value                     | Purpose                   |
-| ---------------------------- | -------- | ------------------------- | ------------------------- |
-| `DEBUG`                      | false    | movieticket-reserve-api:* | Debug                     |
-| `BASIC_AUTH_NAME`            | false    |                           | ベーシック認証Name        |
-| `BASIC_AUTH_PASS`            | false    |                           | ベーシック認証Pass        |
-| `MVTK_RESERVE_ENDPOINT`      | true     |                           | ムビチケAPIエンドポイント |
-| `TOKEN_ISSUERS`              | true     |                           |                           |
-| `RESOURCE_SERVER_IDENTIFIER` | true     |                           |                           |
+| Name                         | Required | Value                  | Purpose              |
+| ---------------------------- | -------- | ---------------------- | -------------------- |
+| `DEBUG`                      | false    | surfrock-reserve-api:* | Debug                |
+| `MVTK_RESERVE_ENDPOINT`      | true     |                        | backend api endpoint |
+| `TOKEN_ISSUERS`              | true     |                        |                      |
+| `RESOURCE_SERVER_IDENTIFIER` | true     |                        |                      |
 
 ## License
 

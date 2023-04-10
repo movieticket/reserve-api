@@ -7,7 +7,7 @@ import { INTERNAL_SERVER_ERROR } from 'http-status';
 
 import { APIError } from '../error/api';
 
-const debug = createDebug('movieticket-reserve-api:middlewares');
+const debug = createDebug('surfrock-reserve-api:middlewares');
 
 export default (err: any, __: Request, res: Response, next: NextFunction) => {
     debug(err);

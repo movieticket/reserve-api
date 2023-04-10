@@ -8,7 +8,7 @@ const createDebug = require("debug");
 const fs = require("fs");
 const https = require("https");
 const app = require("./app/app");
-const debug = createDebug('movieticket-reserve-api:server');
+const debug = createDebug('surfrock-reserve-api:server');
 /**
  * Get port from environment and store in Express.
  */
@@ -75,7 +75,7 @@ function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'
         ? `pipe ${addr}`
-        : `port ${addr.port.toString()}`;
+        : `port ${addr === null || addr === void 0 ? void 0 : addr.port.toString()}`;
     debug(`Listening on ${bind}`);
     const diff = process.hrtime(startTime);
     debug(`api server listening took ${diff[0]} seconds and ${diff[1]} nanoseconds.`);
