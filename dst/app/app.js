@@ -46,9 +46,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 静的ファイル
 // app.use(express.static(__dirname + '/../../public'));
 // routers
-app.use('/', router_1.default);
+app.use('/', router_1.router);
 // 404
-app.use(notFoundHandler_1.default);
+app.use(notFoundHandler_1.notFoundHandler);
 // error handlers
-app.use(errorHandler_1.default);
+app.use(errorHandler_1.errorHandler);
 module.exports = app;

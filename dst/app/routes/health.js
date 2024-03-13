@@ -9,12 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.healthRouter = void 0;
 /**
  * ヘルスチェックルーター
  */
-const express = require("express");
+const express_1 = require("express");
 const http_status_1 = require("http-status");
-const healthRouter = express.Router();
+const healthRouter = (0, express_1.Router)();
+exports.healthRouter = healthRouter;
 healthRouter.get('', (_, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.status(http_status_1.OK)
@@ -24,4 +26,3 @@ healthRouter.get('', (_, res, next) => __awaiter(void 0, void 0, void 0, functio
         next(error);
     }
 }));
-exports.default = healthRouter;

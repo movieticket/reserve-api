@@ -5,11 +5,11 @@
 import * as assert from 'assert';
 import * as sinon from 'sinon';
 
-import * as permitScopes from './permitScopes';
+import { permitScopes } from './permitScopes';
 
 let sandbox: sinon.SinonSandbox;
 
-describe('permitScopes.default()', () => {
+describe('permitScopes()', () => {
     let resourceServerIdentifier = process.env.RESOURCE_SERVER_IDENTIFIER;
 
     beforeEach(() => {
@@ -31,10 +31,12 @@ describe('permitScopes.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once()
+        sandbox.mock(params)
+            .expects('next')
+            .once()
             .withExactArgs(sinon.match.instanceOf(Error));
 
-        const result = await permitScopes.default(scopes)(<any>params.req, <any>params.res, params.next);
+        const result = await permitScopes(scopes)(<any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -47,10 +49,12 @@ describe('permitScopes.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once()
+        sandbox.mock(params)
+            .expects('next')
+            .once()
             .withExactArgs();
 
-        const result = await permitScopes.default(scopes)(<any>params.req, <any>params.res, params.next);
+        const result = await permitScopes(scopes)(<any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -63,10 +67,12 @@ describe('permitScopes.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once()
+        sandbox.mock(params)
+            .expects('next')
+            .once()
             .withExactArgs(sinon.match.instanceOf(Error));
 
-        const result = await permitScopes.default(scopes)(<any>params.req, <any>params.res, params.next);
+        const result = await permitScopes(scopes)(<any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -79,10 +85,12 @@ describe('permitScopes.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once()
+        sandbox.mock(params)
+            .expects('next')
+            .once()
             .withExactArgs(sinon.match.instanceOf(Error));
 
-        const result = await permitScopes.default(scopes)(<any>params.req, <any>params.res, params.next);
+        const result = await permitScopes(scopes)(<any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -95,10 +103,12 @@ describe('permitScopes.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once()
+        sandbox.mock(params)
+            .expects('next')
+            .once()
             .withExactArgs();
 
-        const result = await permitScopes.default(scopes)(<any>params.req, <any>params.res, params.next);
+        const result = await permitScopes(scopes)(<any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });

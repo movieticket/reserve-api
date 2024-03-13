@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.seatRouter = void 0;
 /**
  * 着券ルーター
  */
 const mvtk = require("@motionpicture/mvtk-reserve-service");
-const express = require("express");
-const authentication_1 = require("../middlewares/authentication");
+const express_1 = require("express");
 const permitScopes_1 = require("../middlewares/permitScopes");
-const seatRouter = express.Router();
-seatRouter.use(authentication_1.default);
-seatRouter.post('/seatInfoSync', (0, permitScopes_1.default)(['admin']), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const seatRouter = (0, express_1.Router)();
+exports.seatRouter = seatRouter;
+seatRouter.post('/seatInfoSync', (0, permitScopes_1.permitScopes)(['admin']), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield mvtk.services.seat.seatInfoSync.seatInfoSync(req.body);
         res.json(result);
@@ -27,4 +27,3 @@ seatRouter.post('/seatInfoSync', (0, permitScopes_1.default)(['admin']), (req, r
         next(error);
     }
 }));
-exports.default = seatRouter;

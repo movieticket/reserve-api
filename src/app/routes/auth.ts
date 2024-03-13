@@ -2,13 +2,11 @@
  * 認証ルーター
  */
 import * as mvtk from '@motionpicture/mvtk-reserve-service';
-import * as express from 'express';
+import { Router } from 'express';
 
-import authentication from '../middlewares/authentication';
-import permitScopes from '../middlewares/permitScopes';
+import { permitScopes } from '../middlewares/permitScopes';
 
-const authRouter = express.Router();
-authRouter.use(authentication);
+const authRouter = Router();
 authRouter.post(
     '/purchaseNumberAuth',
     permitScopes(['admin']),
@@ -21,4 +19,4 @@ authRouter.post(
         }
     }
 );
-export default authRouter;
+export { authRouter };

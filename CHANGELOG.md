@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - update express-middleware
+- 依存パッケージ最適化
 
 ### Deprecated
 

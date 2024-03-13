@@ -4,25 +4,19 @@
  */
 import * as assert from 'assert';
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from 'http-status';
-import * as nock from 'nock';
 import * as sinon from 'sinon';
 
 import { APIError } from '../error/api';
-import * as errorHandler from './errorHandler';
+import { errorHandler } from './errorHandler';
 
-// let scope: nock.Scope;
 let sandbox: sinon.SinonSandbox;
 
 describe('errorHandler.default()', () => {
     beforeEach(() => {
-        nock.cleanAll();
-        nock.disableNetConnect();
         sandbox = sinon.sandbox.create();
     });
 
     afterEach(() => {
-        nock.cleanAll();
-        nock.enableNetConnect();
         sandbox.restore();
     });
 
@@ -34,9 +28,12 @@ describe('errorHandler.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').once().withExactArgs(sinon.match.instanceOf(Error));
+        sandbox.mock(params)
+            .expects('next')
+            .once()
+            .withExactArgs(sinon.match.instanceOf(Error));
 
-        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        const result = await errorHandler(params.err, <any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -53,11 +50,20 @@ describe('errorHandler.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').never();
-        sandbox.mock(params.res).expects('status').once().returns(params.res);
-        sandbox.mock(params.res).expects('json').once().withExactArgs({ error: params.err.toObject() }).returns(params.res);
+        sandbox.mock(params)
+            .expects('next')
+            .never();
+        sandbox.mock(params.res)
+            .expects('status')
+            .once()
+            .returns(params.res);
+        sandbox.mock(params.res)
+            .expects('json')
+            .once()
+            .withExactArgs({ error: params.err.toObject() })
+            .returns(params.res);
 
-        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        const result = await errorHandler(params.err, <any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -74,11 +80,20 @@ describe('errorHandler.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').never();
-        sandbox.mock(params.res).expects('status').once().withExactArgs(params.err.code).returns(params.res);
-        sandbox.mock(params.res).expects('json').once().returns(params.res);
+        sandbox.mock(params)
+            .expects('next')
+            .never();
+        sandbox.mock(params.res)
+            .expects('status')
+            .once()
+            .withExactArgs(params.err.code)
+            .returns(params.res);
+        sandbox.mock(params.res)
+            .expects('json')
+            .once()
+            .returns(params.res);
 
-        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        const result = await errorHandler(params.err, <any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });
@@ -95,11 +110,20 @@ describe('errorHandler.default()', () => {
             next: () => undefined
         };
 
-        sandbox.mock(params).expects('next').never();
-        sandbox.mock(params.res).expects('status').once().withExactArgs(INTERNAL_SERVER_ERROR).returns(params.res);
-        sandbox.mock(params.res).expects('json').once().returns(params.res);
+        sandbox.mock(params)
+            .expects('next')
+            .never();
+        sandbox.mock(params.res)
+            .expects('status')
+            .once()
+            .withExactArgs(INTERNAL_SERVER_ERROR)
+            .returns(params.res);
+        sandbox.mock(params.res)
+            .expects('json')
+            .once()
+            .returns(params.res);
 
-        const result = await errorHandler.default(params.err, <any>params.req, <any>params.res, params.next);
+        const result = await errorHandler(params.err, <any>params.req, <any>params.res, params.next);
         assert.equal(result, undefined);
         sandbox.verify();
     });

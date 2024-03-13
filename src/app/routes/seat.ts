@@ -2,13 +2,11 @@
  * 着券ルーター
  */
 import * as mvtk from '@motionpicture/mvtk-reserve-service';
-import * as express from 'express';
+import { Router } from 'express';
 
-import authentication from '../middlewares/authentication';
-import permitScopes from '../middlewares/permitScopes';
+import { permitScopes } from '../middlewares/permitScopes';
 
-const seatRouter = express.Router();
-seatRouter.use(authentication);
+const seatRouter = Router();
 seatRouter.post(
     '/seatInfoSync',
     permitScopes(['admin']),
@@ -21,4 +19,4 @@ seatRouter.post(
         }
     }
 );
-export default seatRouter;
+export { seatRouter };

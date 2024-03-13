@@ -1,10 +1,10 @@
 /**
  * ヘルスチェックルーター
  */
-import * as express from 'express';
+import { Router } from 'express';
 import { OK } from 'http-status';
 
-const healthRouter = express.Router();
+const healthRouter = Router();
 healthRouter.get(
     '',
     async (_, res, next) => {
@@ -16,4 +16,4 @@ healthRouter.get(
         }
     }
 );
-export default healthRouter;
+export { healthRouter };

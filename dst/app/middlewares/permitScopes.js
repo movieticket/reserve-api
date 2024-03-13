@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.permitScopes = void 0;
 /**
  * スコープ許可ミドルウェア
  */
@@ -7,7 +8,7 @@ const createDebug = require("debug");
 const http_status_1 = require("http-status");
 const api_1 = require("../error/api");
 const debug = createDebug('surfrock-reserve-api:middlewares');
-exports.default = (permittedScopes) => {
+function permitScopes(permittedScopes) {
     return (req, _, next) => {
         if (process.env.RESOURCE_SERVER_IDENTIFIER === undefined) {
             next(new Error('RESOURCE_SERVER_IDENTIFIER undefined'));
@@ -38,7 +39,8 @@ exports.default = (permittedScopes) => {
             next(error);
         }
     };
-};
+}
+exports.permitScopes = permitScopes;
 /**
  * 所有スコープが許可されたスコープかどうか
  * @param ownedScopes 所有スコープリスト

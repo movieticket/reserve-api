@@ -13,7 +13,7 @@ const TOKEN_ISSUER_REQUEST_TIMEOUT: number = 5000;
 
 // tslint:disable-next-line:no-single-line-block-comment
 /* istanbul ignore next */
-export default async (req: Request, res: Response, next: NextFunction) => {
+export async function authentication(req: Request, res: Response, next: NextFunction) {
     try {
         await cognitoAuth({
             authorizedHandler: async (user, token) => {
@@ -34,4 +34,4 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     } catch (error) {
         next(new APIError(UNAUTHORIZED, [new Error(error.message)]));
     }
-};
+}
