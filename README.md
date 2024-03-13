@@ -5,7 +5,6 @@
 ## Table of contents
 
 * [Usage](#usage)
-* [License](#license)
 
 ## Usage
 
@@ -17,7 +16,3 @@
 | `MVTK_RESERVE_ENDPOINT`      | true     |                        | backend api endpoint |
 | `TOKEN_ISSUERS`              | true     |                        |                      |
 | `RESOURCE_SERVER_IDENTIFIER` | true     |                        |                      |
-
-## License
-
-ISC

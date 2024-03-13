@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "@motionpicture/express-middleware": "^0.1.3",
+    "@motionpicture/express-middleware": "3.1.0",
     "@motionpicture/mvtk-reserve-service": "1.4.0",
     "body-parser": "1.20.2",
     "debug": "^3.2.7",
@@ -27,7 +27,8 @@
     "@types/http-status": "^0.2.30",
     "@types/mocha": "^5.2.1",
     "@types/nock": "^9.1.3",
-    "@types/node": "14.18.42",
+    "@types/node": "14.18.63",
+    "@types/node-fetch": "2.6.11",
     "@types/qs": "^6.9.7",
     "@types/sinon": "^4.3.3",
     "http-server": "^0.10.0",
@@ -35,19 +36,20 @@
     "nock": "^9.6.1",
     "nyc": "^15.1.0",
     "open": "0.0.5",
+    "redis": "4.6.13",
     "rimraf": "^2.6.2",
     "sinon": "^5.1.1",
-    "ts-node": "10.9.1",
-    "tslint": "^6.1.3",
-    "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "5.0.3"
+    "ts-node": "10.9.2",
+    "tslint": "6.1.3",
+    "tslint-microsoft-contrib": "6.2.0",
+    "typescript": "5.0.4"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
+    "node": ">=18.0.0",
+    "npm": "8.x.x"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "UNLICENSED",
   "name": "surfrock-reserve-api",
   "private": true,
   "repository": {
@@ -68,7 +70,8 @@
     "tslint": "tslint --project tsconfig.json -c tslint.json --exclude \"**/*.spec.ts\" \"src/**/*.ts\"",
     "preversion": "npm run clean && npm run build && npm test && npm run doc",
     "version": "git add -A",
-    "postversion": "git push origin --tags"
+    "postversion": "git push origin --tags",
+    "gcp-build": ""
   },
   "version": "1.2.0"
 }
