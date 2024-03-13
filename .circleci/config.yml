@@ -26,9 +26,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: compile typescript
-          command: npm run build
+      # - run:
+      #     name: compile typescript
+      #     command: npm run build
   test:
     docker:
       - image: cimg/node:18.19.0
@@ -57,9 +57,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Generate docs
-          command: |
-            npm run build
-            npm run doc
+          # command: |
+          #   npm run build
+          #   npm run doc
+          command: npm run doc
   deploy2development:
     docker:
       - image: cimg/node:18.19.0
