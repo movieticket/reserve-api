@@ -6,9 +6,9 @@ import * as express from 'express';
 import helmet from 'helmet';
 import * as qs from 'qs';
 
-import errorHandler from './middlewares/errorHandler';
-import notFoundHandler from './middlewares/notFoundHandler';
-import router from './routes/router';
+import { errorHandler } from './middlewares/errorHandler';
+import { notFoundHandler } from './middlewares/notFoundHandler';
+import { router } from './routes/router';
 
 const app = express();
 app.set('query parser', (str: any) => qs.parse(str, {

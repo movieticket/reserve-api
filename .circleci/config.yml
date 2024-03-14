@@ -3,8 +3,7 @@ jobs:
   build:
     # The primary container is an instance of the first list image listed. Your build commands run in this container.
     docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
+      - image: cimg/node:18.19.0
     steps:
       - checkout
       - run:
@@ -27,13 +26,12 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: compile typescript
-          command: npm run build
+      # - run:
+      #     name: compile typescript
+      #     command: npm run build
   test:
     docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
+      - image: cimg/node:18.19.0
     steps:
       - checkout
       - restore_cache:
@@ -52,21 +50,20 @@ jobs:
       #     prefix: coverage
   doc:
     docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
+      - image: cimg/node:18.19.0
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Generate docs
-          command: |
-            npm run build
-            npm run doc
+          # command: |
+          #   npm run build
+          #   npm run doc
+          command: npm run doc
   deploy2development:
     docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
+      - image: cimg/node:18.19.0
     steps:
       - checkout
       - restore_cache:
@@ -91,8 +88,7 @@ jobs:
   #           git push prerelease $CIRCLE_BRANCH:master -f -v
   deploy:
     docker:
-      - image: circleci/node:latest
-      - image: mongo:3.4.4
+      - image: cimg/node:18.19.0
     steps:
       - checkout
       - restore_cache:
@@ -121,7 +117,6 @@ workflows:
           filters:
             branches:
               only: /feature\/.+-alpha.+/
-              # only: develop
       # - prerelease:
       #     requires:
       #       - doc
@@ -130,7 +125,7 @@ workflows:
       #         only: /feature\/.+-alpha.+/
       - deploy:
           requires:
-            - doc
+            - build
           filters:
             branches:
               only: master

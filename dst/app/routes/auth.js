@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.authRouter = void 0;
 /**
  * 認証ルーター
  */
 const mvtk = require("@motionpicture/mvtk-reserve-service");
-const express = require("express");
-const authentication_1 = require("../middlewares/authentication");
+const express_1 = require("express");
 const permitScopes_1 = require("../middlewares/permitScopes");
-const authRouter = express.Router();
-authRouter.use(authentication_1.default);
-authRouter.post('/purchaseNumberAuth', (0, permitScopes_1.default)(['admin']), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const authRouter = (0, express_1.Router)();
+exports.authRouter = authRouter;
+authRouter.post('/purchaseNumberAuth', (0, permitScopes_1.permitScopes)(['admin']), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield mvtk.services.auth.purchaseNumberAuth.purchaseNumberAuth(req.body);
         res.json(result);
@@ -27,4 +27,3 @@ authRouter.post('/purchaseNumberAuth', (0, permitScopes_1.default)(['admin']), (
         next(error);
     }
 }));
-exports.default = authRouter;

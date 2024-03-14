@@ -18,6 +18,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v1.3.0 - 2024-03-15
+
+### Changed
+
+- update express-middleware
+- 依存パッケージ最適化
+- update mvtk-reserve-service
+
 ## v1.2.0 - 2023-04-11
 
 ### Changed

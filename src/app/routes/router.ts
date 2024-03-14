@@ -1,22 +1,17 @@
 /**
  * ルーター
  */
-import * as express from 'express';
+import { Router } from 'express';
 
-import authRouter from './auth';
-import healthRouter from './health';
-import seatRouter from './seat';
+import { authRouter } from './auth';
+import { healthRouter } from './health';
+import { seatRouter } from './seat';
 
-const router = express.Router();
+import { authentication } from '../middlewares/authentication';
 
-// middleware that is specific to this router
-// router.use((req, res, next) => {
-//   debug('Time: ', Date.now())
-//   next()
-// })
-
-router.use('/auth', authRouter);
+const router = Router();
 router.use('/health', healthRouter);
+router.use(authentication);
+router.use('/auth', authRouter);
 router.use('/seat', seatRouter);
-
-export default router;
+export { router };
