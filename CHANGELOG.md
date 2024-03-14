@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - update express-middleware
 - 依存パッケージ最適化
+- update mvtk-reserve-service
 
 ### Deprecated
 

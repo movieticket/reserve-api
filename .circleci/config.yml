@@ -125,7 +125,7 @@ workflows:
       #         only: /feature\/.+-alpha.+/
       - deploy:
           requires:
-            - doc
+            - build
           filters:
             branches:
               only: master
