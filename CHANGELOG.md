@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v1.3.1 - 2024-03-18
+
+### Changed
+
+- process.jsonを削除
+
 ## v1.3.0 - 2024-03-15
 
 ### Changed
